@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import StarForm from '../StarForm/StarForm';
+import StarDetails from '../StarDetails/StarDetails';
+import StarList from '../StarList/StarList';
 import './Star.css';
 
 class Star extends Component {
@@ -10,9 +13,9 @@ class Star extends Component {
 
             ],
             newStar : {
-                name : 'Felicia Day',
-                role : 'The Guild',
-                popularity : 70
+                name : '',
+                role : '',
+                popularity : ''
             }
          }
     }
@@ -46,24 +49,16 @@ class Star extends Component {
 
     render() {
 
-        let starList = this.state.allStars.map((star, index) => {
-            return <li key={index}>{star.name}, {star.role}, {star.popularity}</li>
-        })
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.newStar.name} type="text" placeholder="Name" onChange={this.handleChangeFor('name')} />
-                    <input value={this.state.newStar.role} type="text" placeholder="Role" onChange={this.handleChangeFor('role')} />
-                    <input value={this.state.newStar.popularity} type="number" placeholder="Popularity Rating" onChange={this.handleChangeFor('popularity')} />
-                    <input type="submit" />
-                </form>
-                <p>{this.state.newStar.name} is famous for {this.state.newStar.role}.</p>
-                <p>{this.state.newStar.name}'s popularity rating is {this.state.newStar.popularity}</p>
-                <p>The Stars:</p>
-                <ul>
-                    {starList}
-                </ul>
+                <StarForm
+                    newStar={this.state.newStar}
+                    handleChangeFor={this.handleChangeFor}
+                    handleSubmit={this.handleSubmit}
+                 />
+                <StarDetails star={this.state.newStar} />
+                <StarList allStars={this.state.allStars} />
             </div>
         )
     }
