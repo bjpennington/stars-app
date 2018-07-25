@@ -8,7 +8,7 @@ class Star extends Component {
             star : {
                 name : 'Felicia Day',
                 role : 'The Guild',
-                popularity : ''
+                popularity : 70
             }
          }
     }
@@ -43,6 +43,14 @@ class Star extends Component {
     handleSubmit = (event) => {
         console.log(this.state.star);
         event.preventDefault();
+
+        this.setState({
+            star : {
+                name : '',
+                role : '',
+                popularity : ''
+            }
+        })
     }
 
 
@@ -50,13 +58,13 @@ class Star extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Name" onChange={this.handleChangeFor('name')} />
-                    <input type="text" placeholder="Role" onChange={this.handleChangeFor('role')} />
-                    <input type="number" placeholder="Popularity Rating" onChange={this.handleChangeFor('popularity')} />
+                    <input value={this.state.star.name} type="text" placeholder="Name" onChange={this.handleChangeFor('name')} />
+                    <input value={this.state.star.role} type="text" placeholder="Role" onChange={this.handleChangeFor('role')} />
+                    <input value={this.state.star.popularity} type="number" placeholder="Popularity Rating" onChange={this.handleChangeFor('popularity')} />
                     <input type="submit" />
                 </form>
                 <p>{this.state.star.name} is famous for {this.state.star.role}.</p>
-                <p>Popularity Rating: {this.state.star.popularity}</p>
+                <p>{this.state.star.name}'s popularity rating is {this.state.star.popularity}</p>
             </div>
         )
     }
