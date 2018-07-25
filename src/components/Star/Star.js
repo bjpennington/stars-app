@@ -51,7 +51,7 @@ class Star extends Component {
 
 
         return (
-            <div>
+            <div className="starsBody">
                 <StarForm
                     newStar={this.state.newStar}
                     handleChangeFor={this.handleChangeFor}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './StarForm.css';
 
 class StarForm extends Component {
     render() {

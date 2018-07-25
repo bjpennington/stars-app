@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './StarList.css'
 
 class StarList extends Component {
     render() {
@@ -8,7 +9,7 @@ class StarList extends Component {
 
         return(
             <div>
-                <p>The Stars:</p>
+                <p className="listTitle">The Stars:</p>
                 <ul>
                     {starList}
                 </ul>
