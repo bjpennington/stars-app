@@ -7,41 +7,56 @@ class Star extends Component {
         this.state = {
             star : {
                 name : 'Felicia Day',
-                role : 'The Guild'
+                role : 'The Guild',
+                popularity : ''
             }
          }
     }
 
-    handleNameChange = (event) => {
+    handleChangeFor = (propertyName) => (event) => {
         this.setState({
             star : {
                 ...this.state.star,
-                name : event.target.value
+                [propertyName] : event.target.value
             }
         })
     }
 
-    handleRoleChange = (event) => {
-        this.setState({
-            star : {
-                ...this.state.star,
-                role : event.target.value
-            }
-        })
-    }
+    // handleNameChange = (event) => {
+    //     this.setState({
+    //         star : {
+    //             ...this.state.star,
+    //             name : event.target.value
+    //         }
+    //     })
+    // }
 
-    handleClick = () => {
+    // handleRoleChange = (event) => {
+    //     this.setState({
+    //         star : {
+    //             ...this.state.star,
+    //             role : event.target.value
+    //         }
+    //     })
+    // }
+
+    handleSubmit = (event) => {
         console.log(this.state.star);
+        event.preventDefault();
     }
 
 
     render() {
         return (
             <div>
-                <input type="text" placeholder="Name" onChange={this.handleNameChange} />
-                <input type="text" placeholder="Role" onChange={this.handleRoleChange} />
-                <button onClick={this.handleClick}>Submit</button>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" placeholder="Name" onChange={this.handleChangeFor('name')} />
+                    <input type="text" placeholder="Role" onChange={this.handleChangeFor('role')} />
+                    <input type="number" placeholder="Popularity Rating" onChange={this.handleChangeFor('popularity')} />
+                    <input type="submit" />
+                </form>
                 <p>{this.state.star.name} is famous for {this.state.star.role}.</p>
+                <p>Popularity Rating: {this.state.star.popularity}</p>
             </div>
         )
     }
